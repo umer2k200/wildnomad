@@ -1,7 +1,8 @@
+import { SITE } from '@/lib/config';
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://wildnomad.pk';
+  const base = SITE.url;
   const now = new Date();
 
   return [

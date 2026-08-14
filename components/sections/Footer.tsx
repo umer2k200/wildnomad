@@ -1,6 +1,26 @@
 import { NAV_LINKS, SITE } from '@/lib/config';
+import { Mail } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
 
 export function Footer() {
   return (
@@ -50,20 +70,22 @@ export function Footer() {
             ))}
           </div>
 
-          <div className="flex flex-col items-center text-center space-y-2 md:items-end md:text-right">
+          <div className="flex flex-col items-center gap-3 text-center md:items-end md:text-right">
             <a
               href={SITE.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="block type-small text-text-secondary hover:text-primary transition-colors duration-fast"
+              className="inline-flex items-center gap-2 type-small text-text-secondary hover:text-primary transition-colors duration-fast"
             >
-              {SITE.instagram}
+              <InstagramIcon className="size-4 shrink-0" />
+              <span>{SITE.instagram}</span>
             </a>
             <a
               href={`mailto:${SITE.contactEmail}`}
-              className="block type-small text-text-secondary hover:text-primary transition-colors duration-fast"
+              className="inline-flex items-center gap-2 type-small text-text-secondary hover:text-primary transition-colors duration-fast"
             >
-              {SITE.contactEmail}
+              <Mail className="size-4 shrink-0" aria-hidden />
+              <span>{SITE.contactEmail}</span>
             </a>
           </div>
         </div>

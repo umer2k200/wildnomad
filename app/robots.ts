@@ -1,3 +1,4 @@
+import { SITE } from '@/lib/config';
 import type { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
@@ -6,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://wildnomad.pk/sitemap.xml',
+    sitemap: `${SITE.url}/sitemap.xml`,
   };
 }

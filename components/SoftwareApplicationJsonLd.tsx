@@ -13,8 +13,8 @@ export function SoftwareApplicationJsonLd() {
       price: '0',
       priceCurrency: 'PKR',
     },
-    url: 'https://wildnomad.pk',
-    image: 'https://wildnomad.pk/icon.png',
+    url: SITE.url,
+    image: `${SITE.url}/icon.png`,
     author: {
       '@type': 'Organization',
       name: SITE.name,

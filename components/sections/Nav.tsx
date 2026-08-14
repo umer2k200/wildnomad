@@ -134,7 +134,15 @@ export function Nav() {
               >
                 {CTA_LABEL}
               </Button>
-              <p className="mt-4 type-mono text-text-muted text-center">
+              <a
+                href={SITE.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 block text-center type-small text-text-secondary hover:text-primary"
+              >
+                Instagram {SITE.instagram}
+              </a>
+              <p className="mt-2 type-mono text-text-muted text-center">
                 {SITE.tagline}
               </p>
             </div>

@@ -29,7 +29,7 @@ const description =
   "Pakistan's rider-verified map for mountain roads. Get early access — free for the first 1,000 riders after launch.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://wildnomad.pk'),
+  metadataBase: new URL(SITE.url),
   title: {
     default: 'Wild Nomad — Ride Pakistan',
     template: '%s · Wild Nomad',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     'Babusar',
     'offline maps Pakistan',
   ],
-  authors: [{ name: SITE.name, url: 'https://wildnomad.pk' }],
+  authors: [{ name: SITE.name, url: SITE.url }],
   creator: SITE.name,
   alternates: {
     canonical: '/',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_PK',
-    url: 'https://wildnomad.pk',
+    url: SITE.url,
     siteName: SITE.name,
     title: 'Wild Nomad — Ride Pakistan',
     description,

@@ -6,8 +6,9 @@ export const SITE = {
   tagline: 'Ride Pakistan',
   positioning: "Pakistan's rider-verified map and trip planner.",
   launchWindow: 'Summer 2026',
-  domain: '', // TODO: set when domain is ready
-  contactEmail: 'hello@wildnomad.pk', // TODO: confirm
+  url: 'https://wildnomad.vercel.app',
+  domain: 'wildnomad.vercel.app',
+  contactEmail: 'umarzeeshan709@gmail.com',
   instagram: '@thewildnomad.pk',
   instagramUrl: 'https://instagram.com/thewildnomad.pk',
   earlyRiderCap: 1000,
