@@ -1,20 +1,20 @@
 import { SoftwareApplicationJsonLd } from '@/components/SoftwareApplicationJsonLd';
 import { SITE } from '@/lib/config';
 import type { Metadata, Viewport } from 'next';
-import { Inter, JetBrains_Mono, Sora } from 'next/font/google';
+import { JetBrains_Mono, Outfit, Source_Sans_3 } from 'next/font/google';
 import './globals.css';
 
-const sora = Sora({
+const heading = Outfit({
   variable: '--font-sora',
   subsets: ['latin'],
   weight: ['600', '700', '800'],
   display: 'swap',
 });
 
-const inter = Inter({
+const body = Source_Sans_3({
   variable: '--font-inter',
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
 
@@ -94,7 +94,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://basemaps.cartocdn.com" />
       </head>
       <body
-        className={`${sora.variable} ${inter.variable} ${jetbrains.variable} antialiased`}
+        className={`${heading.variable} ${body.variable} ${jetbrains.variable} antialiased`}
       >
         <a
           href="#main"
