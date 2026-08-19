@@ -112,7 +112,7 @@ export function EmailCapture({
               <Check className="size-4" aria-hidden />
             </span>
             <p className="type-small text-text">
-              You&apos;re on the list. Check your inbox before launch.
+                              You&apos;re on the list. We&apos;ll email you when we launch.
             </p>
           </motion.div>
         ) : (
