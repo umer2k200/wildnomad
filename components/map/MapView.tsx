@@ -20,29 +20,45 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useMediaQuery } from '@/lib/useMediaQuery';
 
+/**
+ * Dark raster basemap (no API key).
+ * Carto watermarks without a key; OpenFreeMap vector dark can hang before `load`.
+ */
 const MAP_STYLE: StyleSpecification = {
   version: 8,
-  name: 'CARTO Dark Matter',
+  name: 'Esri Dark Gray',
   sources: {
-    carto: {
+    esri: {
       type: 'raster',
       tiles: [
-        'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
-        'https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
-        'https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
+        'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
       ],
       tileSize: 256,
       attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        'Tiles &copy; <a href="https://www.esri.com/">Esri</a> &mdash; Esri, HERE, Garmin, FAO, NOAA, USGS',
+    },
+    esriRef: {
+      type: 'raster',
+      tiles: [
+        'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+      ],
+      tileSize: 256,
     },
   },
   layers: [
     {
-      id: 'carto-tiles',
+      id: 'esri-tiles',
       type: 'raster',
-      source: 'carto',
+      source: 'esri',
       minzoom: 0,
-      maxzoom: 20,
+      maxzoom: 16,
+    },
+    {
+      id: 'esri-labels',
+      type: 'raster',
+      source: 'esriRef',
+      minzoom: 0,
+      maxzoom: 16,
     },
   ],
 };
@@ -193,6 +209,7 @@ export function MapView({ pois }: { pois: WebsitePoi[] }) {
       pitchWithRotate: false,
       touchPitch: false,
       scrollZoom: false,
+      maxZoom: 16,
     });
 
     map.addControl(new NavigationControl({ showCompass: false }), 'top-right');
@@ -224,6 +241,10 @@ export function MapView({ pois }: { pois: WebsitePoi[] }) {
       map.resize();
     });
 
+    map.on('error', (e) => {
+      console.error('[map]', e.error?.message ?? e);
+    });
+
     const ro = new ResizeObserver(() => {
       map.resize();
     });
@@ -239,6 +260,7 @@ export function MapView({ pois }: { pois: WebsitePoi[] }) {
       clearMarkers();
       map.remove();
       mapRef.current = null;
+      setReady(false);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- init once
   }, []);

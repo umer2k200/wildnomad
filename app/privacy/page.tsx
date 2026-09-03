@@ -1,168 +1,578 @@
 import { LegalShell } from '@/components/LegalShell';
-import { SITE } from '@/lib/config';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+
+const PRIVACY_EMAIL = 'venomxrider@gmail.com';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
-    'How Wild Nomad collects, uses, and protects your data — including location, ride history, and waitlist email.',
+    'How Wild Nomad collects, uses, and protects your data — including location, ride history, community content, and waitlist email.',
   alternates: { canonical: '/privacy' },
 };
 
 export default function PrivacyPage() {
   return (
-    <LegalShell title="Privacy Policy" updated="13 August 2026">
+    <LegalShell title="Privacy Policy" updated="3 September 2026">
       <section>
-        <h2>Who we are</h2>
         <p>
-          Wild Nomad (&quot;we&quot;, &quot;us&quot;) is a road-trip companion app
-          for riders and travellers in Pakistan. This policy explains what we
-          collect, why we collect it, and the choices you have. It covers both
-          the mobile app and this website ({SITE.name}).
+          <strong>Effective date:</strong> 6 August 2026
         </p>
         <p>
-          Contact:{' '}
-          <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>
+          Wild Nomad (&quot;<strong>we</strong>&quot;, &quot;<strong>our</strong>
+          &quot;, &quot;<strong>us</strong>&quot;) operates the Wild Nomad
+          mobile application (the &quot;<strong>App</strong>&quot;) for riders
+          and travelers in Pakistan, and this website. This Privacy Policy
+          explains what information we collect, how we use it, who we share it
+          with, and your choices.
+        </p>
+        <p>
+          By using the App or this website, you agree to this Privacy Policy. If
+          you do not agree, please do not use the App or site.
+        </p>
+        <p>
+          <strong>Contact:</strong>{' '}
+          <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a>
+          <br />
+          <strong>Developer / Data controller:</strong> Wild Nomad, Pakistan
         </p>
       </section>
 
       <section>
-        <h2>What we collect</h2>
+        <h2>1. Who this policy applies to</h2>
+        <p>This policy applies to anyone who:</p>
+        <ul>
+          <li>Creates an account or uses the App</li>
+          <li>
+            Uses maps, trip planning, ride tracking, mountain-pass status, road
+            alerts, community, offline packs, or safety tools
+          </li>
+          <li>Views a live location share from a signed-in account</li>
+          <li>Joins the early-access waitlist on this website</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>2. Information we collect</h2>
+
+        <h3>2.1 Account information</h3>
+        <p>When you sign up, we collect:</p>
         <ul>
           <li>
-            <strong>Account information</strong> — name, email, phone (if you
-            provide it), vehicle type, home city, and profile details you choose
-            to add.
+            <strong>Email address and password</strong> (if you register with
+            email)
           </li>
           <li>
-            <strong>Waitlist email</strong> — if you join early access on this
-            site, we store your email and optional name and city so we can
-            notify you at launch.
+            <strong>Name</strong> and optional <strong>phone number</strong>
           </li>
           <li>
-            <strong>Location</strong> — device location is used to show nearby
-            stops, record a ride you start, and share your position only when
-            you choose to (for example via a live link or in a group). We do
-            not sell location data.
+            <strong>Profile photo</strong> (if you upload one)
           </li>
           <li>
-            <strong>Ride data</strong> — distance, speed, elevation, moving
-            time, and GPS tracks for rides you record, so you can review them
-            later.
+            <strong>Home city</strong>, <strong>vehicle type</strong> (bike /
+            car / both), and optional <strong>bio</strong>
           </li>
           <li>
-            <strong>Submitted stops</strong> — places you pin (name, category,
-            coordinates, description, photos, and notes), including contact
-            details you provide for verification.
+            Optional <strong>privacy setting</strong> so other riders see your
+            city only, not how far away you are
           </li>
           <li>
-            <strong>Alerts and reports</strong> — road conditions you report
-            (for example closures or landslides).
+            If you use <strong>Google Sign-In</strong>, we receive your{' '}
+            <strong>Google account email</strong> and{' '}
+            <strong>basic profile</strong> (name, picture) through our
+            authentication provider
+          </li>
+        </ul>
+        <p>We do <strong>not</strong> receive your Google password.</p>
+
+        <h3>2.2 Website waitlist</h3>
+        <p>
+          If you join early access on this site, we store your{' '}
+          <strong>email</strong> and optional <strong>name</strong> and{' '}
+          <strong>city</strong> so we can notify you at launch.
+        </p>
+
+        <h3>2.3 Location information</h3>
+        <p>With your permission, we collect:</p>
+        <ul>
+          <li>
+            <strong>Precise GPS</strong> when you use the map, plan a route, set
+            home city from GPS, report a road alert, add a place, check weather,
+            or view nearby stops
           </li>
           <li>
-            <strong>Community content</strong> — posts, comments, group chat
-            messages, and expense entries you create in the app.
+            <strong>Background location</strong> only while you are{' '}
+            <strong>actively recording a ride</strong>, so the track continues
+            if you switch apps
           </li>
           <li>
-            <strong>Device and diagnostics</strong> — basic technical logs
-            needed to keep the service reliable (for example crash reports and
-            app version). We minimise what we keep.
+            <strong>Last known location</strong> on your device (for a short
+            time) so nearby stops and SOS still work if a fresh fix fails
+          </li>
+          <li>
+            <strong>Home-city coordinates</strong> on your device if you choose
+            &quot;use my location&quot; when setting your city
+          </li>
+        </ul>
+        <p>
+          You can deny or revoke location in device settings. Ride tracking,
+          SOS, and nearby stops need location to work.
+        </p>
+        <p>
+          We do <strong>not</strong> read your phone&apos;s address book.
+          Emergency contacts are names and numbers <strong>you type in</strong>.
+        </p>
+
+        <h3>2.4 Content you create</h3>
+        <p>We store content you submit, including:</p>
+        <ul>
+          <li>
+            <strong>Trips and routes</strong> (places, dates, planned path,
+            notes, expenses, checklists, who you invite)
+          </li>
+          <li>
+            <strong>Plan drafts</strong> saved on your device and, when you are
+            online, on our servers
+          </li>
+          <li>
+            <strong>Recorded rides</strong> (GPS path, distance, speed,
+            elevation, duration)
+          </li>
+          <li>
+            <strong>Photos</strong> on trips, rides, alerts, posts, or places
+            (camera or photo library, with permission)
+          </li>
+          <li>
+            <strong>Road alerts</strong> (type, location, note, optional photo,
+            and optional details such as severity or whether the road is
+            passable)
+          </li>
+          <li>
+            <strong>Alert confirmations and flags</strong> (&quot;still
+            here&quot; / &quot;not there&quot;) linked to your account
+          </li>
+          <li>
+            <strong>Places / stops</strong> you add (name, category, tips,
+            photos, optional contact details). New stops are{' '}
+            <strong>reviewed before they appear to everyone</strong>
+          </li>
+          <li>
+            <strong>Reviews</strong> of places
+          </li>
+          <li>
+            <strong>Mountain-pass reports</strong> you submit (proposed status
+            and note) for admin review
+          </li>
+          <li>
+            <strong>Community posts</strong>, comments, follows, and{' '}
+            <strong>group chat messages</strong>
+          </li>
+          <li>
+            <strong>Emergency contacts</strong> you save
+          </li>
+          <li>
+            <strong>Garage / service records</strong>
+          </li>
+          <li>
+            Optional <strong>&quot;Riding now&quot;</strong> status until it
+            expires
+          </li>
+        </ul>
+
+        <h3>2.5 Live location sharing and SOS</h3>
+        <p>
+          If you start live sharing or <strong>SOS</strong>, we process your{' '}
+          <strong>current location</strong> and may create a{' '}
+          <strong>shareable in-app link</strong>. People you send that link to
+          can view it <strong>while signed in</strong> for a limited time.
+        </p>
+        <p>
+          SOS can send a message through <strong>SMS</strong> or{' '}
+          <strong>WhatsApp</strong> on your device, or copy the text to your
+          clipboard. Recipients see the location you chose to send.
+        </p>
+        <p>
+          <strong>
+            SOS is an aid only — it is not a substitute for calling official
+            emergency services (e.g. 1122, 15).
+          </strong>
+        </p>
+
+        <h3>2.6 Device, notifications, and on-device storage</h3>
+        <p>We may collect or store:</p>
+        <ul>
+          <li>
+            <strong>Push notification token</strong> (trip reminders, fuel-price
+            alerts if you opt in, social activity)
+          </li>
+          <li>
+            <strong>Basic device information</strong> (operating system, app
+            version)
+          </li>
+          <li>
+            <strong>Offline packs</strong> on your device (stops, alerts, your
+            saved routes, emergency numbers for a region)
+          </li>
+          <li>
+            <strong>Local copies</strong> of your trips, rides, garage, and
+            drafts so the App still works <strong>offline</strong>; pending
+            changes sync when you reconnect
+          </li>
+        </ul>
+        <p>
+          We do <strong>not</strong> sell your personal information. We do{' '}
+          <strong>not</strong> use third-party advertising or analytics SDKs in
+          the App at this time.
+        </p>
+
+        <h3>2.7 Optional AI trip planner</h3>
+        <p>
+          If you use the AI itinerary feature (when enabled), the text you type
+          and basic context (such as origin, days, budget, vehicle) may be sent
+          to <strong>Anthropic</strong> or <strong>OpenAI</strong> to generate a
+          draft plan. Do not put other people&apos;s private details in that
+          prompt.
+        </p>
+
+        <h3>2.8 Information from others</h3>
+        <ul>
+          <li>
+            Other users may mention you in groups, trips, or posts.
+          </li>
+          <li>
+            Admins may review stops, alerts, and pass reports you submitted
+            (including hiding or rejecting content that breaks the rules).
           </li>
         </ul>
       </section>
 
       <section>
-        <h2>Why we use it</h2>
+        <h2>3. How we use your information</h2>
+        <p>We use your information to:</p>
         <ul>
-          <li>To operate the map, trip planner, offline packs, and safety features</li>
-          <li>To show nearby stops and route-relevant alerts</li>
-          <li>To verify community-submitted places before they go live</li>
-          <li>To let you share location only when you turn that on</li>
-          <li>To email you about launch and early access if you opted in</li>
-          <li>To improve reliability and fix bugs</li>
+          <li>Create and manage your account</li>
+          <li>
+            Show maps, stops, routes, weather,{' '}
+            <strong>mountain-pass status</strong>, and{' '}
+            <strong>road alerts</strong>
+          </li>
+          <li>
+            Plan trips, estimate <strong>distance and fuel cost</strong>, and
+            save itineraries
+          </li>
+          <li>Record rides and show history</li>
+          <li>
+            Download <strong>offline packs</strong> for areas with no signal
+          </li>
+          <li>Run community features (feed, groups, chat, follows)</li>
+          <li>
+            Send <strong>push notifications</strong> you opt into (including
+            optional <strong>fuel-price</strong> alerts)
+          </li>
+          <li>
+            Provide <strong>safety features</strong> (SOS, emergency contacts,
+            live location share)
+          </li>
+          <li>Email you about launch and early access if you joined the waitlist</li>
+          <li>Moderate user-generated content and prevent abuse</li>
+          <li>Improve reliability and fix bugs</li>
+          <li>Comply with legal obligations</li>
         </ul>
       </section>
 
       <section>
-        <h2>Location sharing</h2>
+        <h2>4. Legal bases (where applicable)</h2>
+        <p>Depending on your region, we process data based on:</p>
+        <ul>
+          <li>
+            <strong>Your consent</strong> (location, notifications,
+            camera/photos, optional profile fields, waitlist email)
+          </li>
+          <li>
+            <strong>Performance of a service</strong> you request (saving a
+            trip, recording a ride, posting an alert)
+          </li>
+          <li>
+            <strong>Legitimate interests</strong> (securing the App, preventing
+            fraud, moderating the map)
+          </li>
+          <li>
+            <strong>Legal obligation</strong> where required
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>5. Who we share information with</h2>
+
+        <h3>5.1 Service providers</h3>
         <p>
-          Location stays on your device and with our servers only as needed for
-          the features you use. Live location is shared with others only when
-          you explicitly start sharing (link or group). You can stop sharing at
-          any time in the app.
+          We use providers to run the App and website. They process data on our
+          behalf under their own policies.
+        </p>
+        <ul>
+          <li>
+            <strong>Supabase</strong> — auth, database, file storage, realtime
+            chat; account, profile, trips, rides, posts, photos, coordinates you
+            submit, and waitlist emails
+          </li>
+          <li>
+            <strong>Google</strong> — optional sign-in; email and basic profile
+            from Google
+          </li>
+          <li>
+            <strong>Expo / EAS</strong> — app builds and push delivery; push
+            token, device type
+          </li>
+          <li>
+            <strong>Firebase Cloud Messaging</strong> — Android push (when
+            configured); push registration
+          </li>
+          <li>
+            <strong>Open-Meteo</strong> — weather and pass-road risk hints;
+            latitude/longitude you request
+          </li>
+          <li>
+            <strong>OpenFreeMap, OpenStreetMap, Esri ArcGIS</strong> — map tiles
+            in the App; map tile requests (approximate area you are viewing)
+          </li>
+          <li>
+            <strong>Mapbox</strong> (optional) — routing / traffic when enabled;
+            route waypoints
+          </li>
+          <li>
+            <strong>OSRM</strong> (public routing) — fallback route geometry;
+            start/end/via coordinates
+          </li>
+          <li>
+            <strong>OpenStreetMap Nominatim</strong> — place search and reverse
+            geocoding; search text or coordinates (Pakistan-focused)
+          </li>
+          <li>
+            <strong>fuel.trackmate.page</strong> — published Pakistan fuel
+            prices; no account data; we fetch public prices
+          </li>
+          <li>
+            <strong>Anthropic or OpenAI</strong> (optional) — AI itinerary
+            drafts; the prompt and planning context you submit
+          </li>
+          <li>
+            <strong>Vercel</strong> — hosting for this website
+          </li>
+        </ul>
+
+        <h3>5.2 Other users and the public</h3>
+        <p>Depending on your actions:</p>
+        <ul>
+          <li>
+            <strong>Community posts</strong>, <strong>approved stops</strong>,{' '}
+            <strong>road alerts</strong>, and <strong>reviews</strong> may be{' '}
+            <strong>visible to other App users</strong>.
+          </li>
+          <li>
+            <strong>Mountain-pass status</strong> on the map is visible in the
+            App; your written report is reviewed before it changes a pass.
+          </li>
+          <li>
+            <strong>Live location</strong> is visible to people you share with
+            who can open it in the App.
+          </li>
+          <li>
+            <strong>Rider profile</strong> (name, city, vehicle, bio, avatar)
+            may be visible in the community. Distance to you is hidden if you
+            turn on city-only.
+          </li>
+        </ul>
+
+        <h3>5.3 Legal and safety</h3>
+        <p>
+          We may disclose information if required by law, or to protect the
+          safety of users or the public.
+        </p>
+        <p>We do <strong>not</strong> sell personal information to data brokers.</p>
+      </section>
+
+      <section>
+        <h2>6. Data storage and security</h2>
+        <ul>
+          <li>
+            Account and cloud data are stored on <strong>Supabase</strong>{' '}
+            (region depends on project configuration).
+          </li>
+          <li>
+            Passwords are handled by Supabase Auth; we do not store plain-text
+            passwords.
+          </li>
+          <li>
+            We use <strong>HTTPS</strong> in transit and{' '}
+            <strong>Row Level Security</strong> on the database where
+            applicable.
+          </li>
+          <li>
+            Offline copies and packs live <strong>on your device</strong> until
+            you delete them or uninstall the App.
+          </li>
+          <li>No transmission or storage is 100% secure.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>7. Data retention</h2>
+        <p>
+          We keep your information while your account is active or as needed to
+          provide the App. Email{' '}
+          <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a> to request
+          account deletion.
+        </p>
+        <p>
+          Waitlist emails are kept until launch notifications are complete or
+          you ask us to remove them.
+        </p>
+        <p>
+          Some community content (posts, alerts, approved stops) may remain if
+          other riders rely on it, or in anonymized form, until removed by you
+          or by moderation.
+        </p>
+        <p>
+          Road alerts typically <strong>expire after 48 hours</strong> unless
+          someone confirms they are still there.
+        </p>
+        <p>
+          Offline packs stay on the device until you delete them in the App or
+          uninstall.
         </p>
       </section>
 
       <section>
-        <h2>Third parties</h2>
-        <p>We use trusted providers to run the product:</p>
+        <h2>8. Your choices and rights</h2>
+        <p>You can:</p>
         <ul>
           <li>
-            <strong>Supabase</strong> — authentication, database, and storage
-            for account and app data
+            <strong>Access and update</strong> your profile in the App
           </li>
           <li>
-            <strong>Open-Meteo</strong> — weather and related forecasts used for
-            road-risk context
+            <strong>Hide distance</strong> from other riders (city only)
           </li>
           <li>
-            <strong>Map tile providers</strong> — map imagery and basemap tiles
-            (for example OpenStreetMap-based tiles and CARTO styles). Tile
-            requests may include approximate view coordinates.
+            <strong>Turn off location</strong> or <strong>notifications</strong>{' '}
+            in device settings
           </li>
           <li>
-            <strong>Hosting</strong> — this website is hosted on Vercel
+            <strong>Delete</strong> content you created where the App allows
+            (trips, rides, your posts, your alerts, packs)
+          </li>
+          <li>
+            <strong>Request account deletion</strong> by emailing{' '}
+            <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a>
+          </li>
+          <li>
+            <strong>Ask us to remove</strong> your waitlist email
+          </li>
+          <li>
+            <strong>Revoke Google access</strong> in your Google Account
+            settings
           </li>
         </ul>
         <p>
-          These providers process data only to deliver their service to us.
-          They are not given permission to sell your data for advertising.
+          Depending on your country, you may have additional rights (access,
+          correction, deletion, objection). Contact us to exercise them.
         </p>
       </section>
 
       <section>
-        <h2>Retention</h2>
+        <h2>9. Children&apos;s privacy</h2>
         <p>
-          We keep account and ride data while your account is active. Waitlist
-          emails are kept until launch notifications are complete or you ask us
-          to remove them. You can request deletion of your account and
-          associated data; we will remove what we no longer need to operate the
-          service or meet legal obligations.
+          Wild Nomad is <strong>not directed at children under 13</strong> (or
+          the minimum age in your country). We do not knowingly collect personal
+          information from children. If you believe a child has provided us
+          data, contact us and we will delete it.
         </p>
       </section>
 
       <section>
-        <h2>Your rights</h2>
+        <h2>10. International users</h2>
+        <p>
+          The App is designed for <strong>Pakistan</strong> but may be used from
+          other countries. Your data may be processed where our providers
+          operate. By using the App, you consent to this transfer where
+          permitted by law.
+        </p>
+      </section>
+
+      <section>
+        <h2>11. Third-party links and apps</h2>
+        <p>
+          The App may open <strong>Google Maps</strong>,{' '}
+          <strong>WhatsApp</strong>, <strong>phone / SMS</strong>, or other
+          apps on your device. We are not responsible for their privacy
+          practices.
+        </p>
+      </section>
+
+      <section>
+        <h2>12. Changes to this policy</h2>
+        <p>
+          We may update this Privacy Policy from time to time. The new version
+          will show a new &quot;Last updated&quot; date. Continued use of the
+          App or website after changes means you accept the updated policy.
+        </p>
+      </section>
+
+      <section>
+        <h2>13. Google Play Data safety (summary)</h2>
+        <p>Summary for Play Console → Data safety:</p>
         <ul>
-          <li>Access the personal data we hold about you</li>
-          <li>Correct inaccurate information</li>
-          <li>Request deletion of your account and related data</li>
-          <li>Withdraw consent for optional uses (for example marketing email)</li>
-          <li>Export a copy of your data where reasonably available</li>
+          <li>
+            <strong>Email, name, user IDs</strong> — collected; shared with
+            Supabase (processor); account
+          </li>
+          <li>
+            <strong>Phone number</strong> — optional; Supabase; profile / SOS
+            contacts you save
+          </li>
+          <li>
+            <strong>Photos</strong> — yes; Supabase; visible per feature; user
+            content
+          </li>
+          <li>
+            <strong>Precise location</strong> — yes; Supabase; live share you
+            start; maps, rides, alerts, safety
+          </li>
+          <li>
+            <strong>App activity</strong> (trips, rides, posts, alerts) — yes;
+            Supabase; app functionality
+          </li>
+          <li>
+            <strong>Device IDs</strong> (push token) — yes; Expo / FCM;
+            notifications
+          </li>
+          <li>
+            <strong>Other user content</strong> (messages, reports) — yes;
+            Supabase; visible per feature; community and moderation
+          </li>
         </ul>
         <p>
-          Email{' '}
-          <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a> and
-          we will respond within a reasonable time.
+          Data is <strong>encrypted in transit</strong>. Users can{' '}
+          <strong>request deletion</strong> via support email.{' '}
+          <strong>No advertising SDK. No sale of personal data.</strong>
         </p>
       </section>
 
       <section>
-        <h2>Children</h2>
-        <p>
-          Wild Nomad is not directed at children under 13. We do not knowingly
-          collect personal information from children.
-        </p>
-      </section>
-
-      <section>
-        <h2>Changes</h2>
-        <p>
-          We may update this policy as the product evolves. The &quot;Last
-          updated&quot; date at the top will change when we do. Continued use
-          after a material update means you accept the revised policy.
-        </p>
+        <h2>14. Contact us</h2>
+        <p>Questions about this Privacy Policy or your data:</p>
+        <ul>
+          <li>
+            <strong>Email:</strong>{' '}
+            <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a>
+          </li>
+          <li>
+            <strong>App name:</strong> Wild Nomad
+          </li>
+          <li>
+            <strong>Package name:</strong> com.wildnomad.app
+          </li>
+        </ul>
       </section>
 
       <section>

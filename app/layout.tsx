@@ -89,9 +89,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        <link rel="preconnect" href="https://a.basemaps.cartocdn.com" />
-        <link rel="preconnect" href="https://b.basemaps.cartocdn.com" />
-        <link rel="dns-prefetch" href="https://basemaps.cartocdn.com" />
+        <link rel="preconnect" href="https://server.arcgisonline.com" />
+        <link rel="dns-prefetch" href="https://server.arcgisonline.com" />
       </head>
       <body
         className={`${heading.variable} ${body.variable} ${jetbrains.variable} antialiased`}
