@@ -122,7 +122,8 @@ export function Hero() {
             </div>
 
             <p className="mt-6 type-mono text-text-muted text-pretty">
-              100+ stops · 21 categories · Stops work offline · Free
+              {SITE.stopCount} stops · {SITE.categoryCount} categories · Stops
+              work offline · Free
             </p>
           </div>
 

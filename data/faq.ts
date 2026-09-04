@@ -33,7 +33,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: 'data',
     question: 'Where does the data come from?',
     answer:
-      'Riders. Every stop is submitted by someone who was there and reviewed before it goes live. The map starts with 100+ verified stops and grows with every ride.',
+      `Riders. Every stop is submitted by someone who was there and reviewed before it goes live. The map starts with ${SITE.stopCount} verified stops and grows with every ride.`,
   },
   {
     id: 'coverage',

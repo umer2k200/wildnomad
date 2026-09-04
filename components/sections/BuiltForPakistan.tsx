@@ -21,13 +21,13 @@ const CARDS = [
   },
   {
     icon: Fuel,
-    title: 'Fuel cost estimates in PKR',
-    copy: 'Route cost uses Pakistan fuel prices in rupees — a real number, not a guess in dollars.',
+    title: 'Live fuel prices in rupees',
+    copy: "Today's OGRA petrol and diesel on the home screen, so the cost on your route is a real number.",
   },
   {
     icon: MountainSnow,
-    title: 'Pass status before you leave',
-    copy: 'Babusar, Khunjerab, Lowari, Shandur, Burzil and Deosai — seasonal open/closed guidance before you commit.',
+    title: 'Pass status from riders ahead',
+    copy: 'Twelve northern passes — Babusar to Shangla. Rider reports, admin confirmation, and weather at the top. Not a season chart.',
   },
   {
     icon: Download,

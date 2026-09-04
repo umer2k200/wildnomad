@@ -1,9 +1,10 @@
 import { ImageResponse } from 'next/og';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { SITE } from '@/lib/config';
 
 export const runtime = 'nodejs';
-export const alt = 'Wild Nomad — Ride Pakistan. 100+ verified stops across Pakistan.';
+export const alt = `Wild Nomad — Ride Pakistan. ${SITE.stopCount} verified stops across Pakistan.`;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -82,7 +83,7 @@ export default async function OgImage() {
               fontFamily: 'monospace',
             }}
           >
-            100+ verified stops across Pakistan
+            {SITE.stopCount} verified stops across Pakistan
           </div>
         </div>
 

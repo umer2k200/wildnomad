@@ -12,6 +12,10 @@ export const SITE = {
   instagram: '@thewildnomad.pk',
   instagramUrl: 'https://instagram.com/thewildnomad.pk',
   earlyRiderCap: 1000,
+  stopCount: 93,
+  categoryCount: 23,
+  offlineRegionCount: 7,
+  passCount: 12,
 } as const;
 
 export const CTA_LABEL =

@@ -3,6 +3,7 @@
 import { PhoneFrame } from '@/components/ui/PhoneFrame';
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { SITE } from '@/lib/config';
 import { cn } from '@/lib/utils';
 import { motion, useReducedMotion } from 'framer-motion';
 import {
@@ -11,7 +12,7 @@ import {
   Construction,
   Snowflake,
   Star,
-  Wrench,
+  Users,
   type LucideIcon,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -153,27 +154,27 @@ function OfflineVisual() {
 const SCREENSHOT_CARDS = [
   {
     title: "Stops the big maps don't have",
-    copy: 'Fuel, mechanics, dhabas, hospitals, campsites, viewpoints. Rider-pinned, rider-reviewed — twenty-one categories with stars from people who stopped there.',
-    src: '/screenshots/01-map.png',
-    alt: 'Map screen with verified stops',
+    copy: `Fuel, mechanics, dhabas, hospitals, campsites, viewpoints. Rider-pinned, with photos, hours and stars from people who stopped there. ${SITE.categoryCount} categories.`,
+    src: '/screenshots/02-poi.png',
+    alt: 'Verified stop detail with photo, elevation, road condition and directions',
   },
   {
     title: 'Plan it before you turn the key',
-    copy: 'Distance, ETA, fuel cost, corridor stops, packing checklist, and shared trip expenses that settle themselves — no more Splitwise chaos.',
+    copy: 'Bike or car routing, distance, ETA, fuel cost, corridor stops, packing checklist, and shared trip expenses that settle themselves.',
     src: '/screenshots/03-plan.png',
-    alt: 'Trip plan from Islamabad to Hunza',
+    alt: 'Bike route from Islamabad to Hunza with distance, time and fuel cost',
+  },
+  {
+    title: 'Weather, fuel, and whether the pass is open',
+    copy: `Road-risk from snow, rain and wind. Today's OGRA petrol and diesel. ${SITE.passCount} northern passes with rider reports, not a calendar.`,
+    src: '/screenshots/07-home.png',
+    alt: 'Home screen with ride-risk weather, Pakistan fuel prices and mountain pass status',
   },
   {
     title: 'Live GPS, every kilometre',
     copy: 'Track the ride in the background — distance, speed, elevation, moving time. Share a live link so someone always knows where you are.',
     src: '/screenshots/04-ride.png',
     alt: 'Active ride tracking dashboard',
-  },
-  {
-    title: 'Ride with people who know the road',
-    copy: 'Groups, realtime chat, follow riders near you, and a feed of routes and tips that survive past Instagram stories.',
-    src: '/screenshots/09-community.png',
-    alt: 'Community feed and rider groups',
   },
 ] as const;
 
@@ -193,9 +194,9 @@ const EXTRA_FEATURES: {
     copy: 'Per-trip list by category so the spare tube isn’t still at home.',
   },
   {
-    icon: Wrench,
-    title: 'Garage service log',
-    copy: 'Oil changes and services by bike or car — date, odometer, notes. The sticker that never wears off.',
+    icon: Users,
+    title: 'Ride with people who know the road',
+    copy: 'Groups, realtime chat, follow riders near you, and a feed of routes and tips that survive past Instagram stories.',
   },
 ];
 
@@ -214,7 +215,7 @@ export function Features() {
               Map, plan, ride, stay safe — the full toolkit.
             </span>
           }
-          lead="Stops and routes are the start. Tracking, SOS, reviews, checklists and garage logs cover the rest of the trip."
+          lead="Stops and routes are the start. Weather, pass status, live fuel prices, tracking and SOS cover the rest of the trip."
         />
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 xl:gap-5">
@@ -235,7 +236,7 @@ export function Features() {
               <h3 className="type-h3">Know what the road is doing</h3>
               <p className="mt-3 type-body text-text-secondary max-w-prose-narrow">
                 Landslides, closures, snow and checkpoints, reported by riders
-                ahead of you — plus seasonal pass status before you commit.
+                ahead of you — and a ping if one hits a route you already saved.
               </p>
               <AlertsVisual />
             </article>
@@ -271,15 +272,23 @@ export function Features() {
                 Two-tap SOS over SMS and WhatsApp, emergency contacts, live
                 location by link, and Pakistan&apos;s numbers built in.
               </p>
-              <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
-                {['1122', '15', '130', '115'].map((n) => (
-                  <span
-                    key={n}
-                    className="type-stat text-[clamp(1.75rem,3vw,2.5rem)] text-primary"
-                  >
-                    {n}
-                  </span>
-                ))}
+              <div className="mt-6 flex flex-1 flex-col items-center justify-end gap-4">
+                <PhoneFrame
+                  tilt={false}
+                  className="w-full max-w-[200px]"
+                  src="/screenshots/10-safety.png"
+                  alt="Safety screen with SOS button and Pakistan emergency numbers"
+                />
+                <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
+                  {['1122', '15', '130', '115'].map((n) => (
+                    <span
+                      key={n}
+                      className="type-stat text-[clamp(1.75rem,3vw,2.5rem)] text-primary"
+                    >
+                      {n}
+                    </span>
+                  ))}
+                </div>
               </div>
             </article>
           </Reveal>

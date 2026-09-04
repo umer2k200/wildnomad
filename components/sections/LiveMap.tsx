@@ -2,6 +2,7 @@
 
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import type { WebsitePoi } from '@/data/categories';
+import { SITE } from '@/lib/config';
 import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState } from 'react';
 
@@ -49,7 +50,7 @@ export function LiveMap({ pois }: { pois: WebsitePoi[] }) {
           align="center"
           eyebrow="Live data"
           title={<span id="map-heading">Pan the map. Open a stop.</span>}
-          lead="A sample of real stops from the app. Filter it, zoom it, tap one. The full map lives in Wild Nomad."
+          lead="Every stop below is real, pinned by riders and already in the app. Filter it, zoom it, tap one."
         />
       </div>
 
@@ -67,12 +68,12 @@ export function LiveMap({ pois }: { pois: WebsitePoi[] }) {
 
         <div className="mt-4 space-y-2 px-5 text-center">
           <p className="type-mono text-text-muted">
-            Sample on this site · 7 offline packs in the app · Community
-            submitted, admin verified
+            {SITE.stopCount} stops on this map · {SITE.offlineRegionCount}{' '}
+            offline packs in the app · Community submitted, admin verified
           </p>
           <p className="type-small text-text-secondary max-w-prose-narrow mx-auto">
-            Not every stop is on this page. For all 100+ verified stops,
-            filters, and offline packs — use the Wild Nomad app.
+            Live alerts, {SITE.passCount} mountain passes, and offline packs
+            live in the Wild Nomad app.
           </p>
         </div>
       </div>

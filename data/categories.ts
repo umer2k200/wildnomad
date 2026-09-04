@@ -19,7 +19,9 @@ export type PoiCategory =
   | 'trail'
   | 'washroom'
   | 'parking'
-  | 'hidden_gem';
+  | 'hidden_gem'
+  | 'attraction'
+  | 'police';
 
 export type CategoryMeta = {
   key: PoiCategory;
@@ -52,6 +54,8 @@ export const POI_CATEGORIES: CategoryMeta[] = [
   { key: 'washroom', label: 'Washrooms', short: 'WC', color: '#A8A29B', emoji: '🚻' },
   { key: 'parking', label: 'Parking', short: 'Park', color: '#A8A29B', emoji: '🅿️' },
   { key: 'hidden_gem', label: 'Hidden Gems', short: 'Gem', color: '#D9642C', emoji: '✨' },
+  { key: 'attraction', label: 'Attractions', short: 'Attraction', color: '#B8924A', emoji: '🏛️' },
+  { key: 'police', label: 'Police stations', short: 'Police', color: '#4A7FD4', emoji: '🚓' },
 ];
 
 export const CATEGORY_MAP: Record<PoiCategory, CategoryMeta> = POI_CATEGORIES.reduce(

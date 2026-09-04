@@ -1,11 +1,12 @@
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter';
 import { Reveal } from '@/components/ui/Reveal';
+import { SITE } from '@/lib/config';
 
 const STATS = [
-  { value: 100, suffix: '+', label: 'Verified stops' },
-  { value: 21, suffix: '', label: 'Categories' },
-  { value: 7, suffix: '', label: 'Offline regions' },
-  { value: 6, suffix: '+', label: 'Mountain passes' },
+  { value: SITE.stopCount, suffix: '', label: 'Verified stops' },
+  { value: SITE.categoryCount, suffix: '', label: 'Categories' },
+  { value: SITE.offlineRegionCount, suffix: '', label: 'Offline regions' },
+  { value: SITE.passCount, suffix: '', label: 'Mountain passes' },
 ] as const;
 
 export function Stats() {

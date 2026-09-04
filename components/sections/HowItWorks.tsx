@@ -5,7 +5,7 @@ const STEPS = [
   {
     n: '01',
     title: 'Plan',
-    copy: 'Pick start and destination. Get the route, fuel cost, packing checklist, and every stop along the corridor.',
+    copy: 'Pick start and destination. Bike or car routing, fuel cost, packing checklist, and the weather waiting for you.',
   },
   {
     n: '02',
