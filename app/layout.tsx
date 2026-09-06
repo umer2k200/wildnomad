@@ -1,5 +1,6 @@
 import { SoftwareApplicationJsonLd } from '@/components/SoftwareApplicationJsonLd';
 import { SITE } from '@/lib/config';
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata, Viewport } from 'next';
 import { JetBrains_Mono, Outfit, Source_Sans_3 } from 'next/font/google';
 import './globals.css';
@@ -103,6 +104,7 @@ export default function RootLayout({
         </a>
         <SoftwareApplicationJsonLd />
         {children}
+        <Analytics />
       </body>
     </html>
   );
