@@ -26,6 +26,7 @@ export default async function OgImage() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
+          position: 'relative',
           background: '#121212',
           padding: '64px',
           fontFamily: 'sans-serif',
@@ -33,14 +34,19 @@ export default async function OgImage() {
       >
         <div
           style={{
+            display: 'flex',
             position: 'absolute',
-            inset: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
             background:
               'radial-gradient(circle at 80% 20%, rgba(217,100,44,0.28), transparent 45%)',
           }}
         />
         <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
           {logoSrc ? (
+            // OG images must use <img>; next/image is not supported by Satori
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={logoSrc}
@@ -52,6 +58,7 @@ export default async function OgImage() {
           ) : null}
           <div
             style={{
+              display: 'flex',
               fontSize: 28,
               fontWeight: 700,
               letterSpacing: '0.12em',
@@ -66,6 +73,7 @@ export default async function OgImage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <div
             style={{
+              display: 'flex',
               fontSize: 64,
               fontWeight: 800,
               lineHeight: 1.05,
@@ -78,12 +86,13 @@ export default async function OgImage() {
           </div>
           <div
             style={{
+              display: 'flex',
               fontSize: 28,
               color: '#A8A29B',
               fontFamily: 'monospace',
             }}
           >
-            {SITE.stopCount} verified stops across Pakistan
+            {`${SITE.stopCount} verified stops across Pakistan`}
           </div>
         </div>
 
@@ -101,13 +110,14 @@ export default async function OgImage() {
         >
           <div
             style={{
+              display: 'flex',
               width: 10,
               height: 10,
               borderRadius: 999,
               background: '#D9642C',
             }}
           />
-          Ride Pakistan
+          <div style={{ display: 'flex' }}>Ride Pakistan</div>
         </div>
       </div>
     ),
