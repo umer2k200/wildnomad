@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
   }
 
   const source =
-    body.source === 'founding' || body.source === 'hero'
+    body.source === 'founding' || body.source === 'hero' || body.source === 'faq'
       ? body.source
       : 'hero';
   const name = body.name?.trim() || null;

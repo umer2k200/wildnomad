@@ -10,12 +10,13 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     id: 'free',
     question: 'Is it free?',
-    answer: `After launch, the first ${SITE.earlyRiderCap.toLocaleString('en-PK')} riders get Wild Nomad free. If paid features ever arrive later, the map and the planner stay free.`,
+    answer:
+      'The map and the trip planner are free. If paid features arrive later, those two stay free.',
   },
   {
     id: 'launch',
     question: 'When does it launch?',
-    answer: `${SITE.launchWindow} on Android. Leave your email and you'll get it the day it's live.`,
+    answer: `${SITE.launchWindow} on Android. Leave your email and you'll get it the day it's on the Play Store.`,
   },
   {
     id: 'ios',
@@ -27,7 +28,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: 'offline',
     question: 'Does it work without signal?',
     answer:
-      'Download a region before you leave and your stops, routes, alerts and emergency numbers all work offline. Map tiles still need a connection, so download while you have one.',
+      'Download a corridor before you leave — Hunza & Skardu, Naran & Kaghan, Chitral, Murree, Punjab, the Karachi coast, or Makran. Stops, your route, alerts, emergency numbers and the street tiles for that pack stay on the phone.',
   },
   {
     id: 'data',

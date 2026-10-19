@@ -16,7 +16,15 @@ export function CategoryFilter({
       role="toolbar"
       aria-label="Filter stops by category"
     >
-      <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div
+        className="flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        style={{
+          maskImage:
+            'linear-gradient(to right, #000 0, #000 calc(100% - 2.25rem), transparent)',
+          WebkitMaskImage:
+            'linear-gradient(to right, #000 0, #000 calc(100% - 2.25rem), transparent)',
+        }}
+      >
         <button
           type="button"
           onClick={() => onChange('all')}

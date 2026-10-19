@@ -10,7 +10,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export type EmailCaptureProps = {
-  source: 'hero' | 'founding';
+  source: 'hero' | 'founding' | 'faq';
   variant?: 'pill' | 'stacked';
   showName?: boolean;
   showCity?: boolean;
@@ -34,9 +34,7 @@ export function EmailCapture({
   const [success, setSuccess] = useState(false);
   const reduceMotion = useReducedMotion();
 
-  const label =
-    buttonLabel ??
-    (source === 'founding' ? 'Claim a spot' : CTA_LABEL);
+  const label = buttonLabel ?? CTA_LABEL;
 
   if (LAUNCH_STATE === 'live') {
     return (

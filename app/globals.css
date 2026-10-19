@@ -122,6 +122,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    scroll-padding-bottom: 5.5rem;
     color-scheme: dark;
   }
 
@@ -302,6 +304,33 @@
     }
     100% {
       transform: translateY(200%);
+    }
+  }
+
+  @keyframes hero-crossfade {
+    0%,
+    18% {
+      opacity: 1;
+    }
+    25%,
+    93% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .hero-slide {
+    animation: hero-crossfade 32s linear infinite;
+  }
+
+  @keyframes ride-dot {
+    from {
+      offset-distance: 0%;
+    }
+    to {
+      offset-distance: 100%;
     }
   }
 }

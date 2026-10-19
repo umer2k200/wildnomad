@@ -5,13 +5,12 @@ export const SITE = {
   name: 'Wild Nomad',
   tagline: 'Ride Pakistan',
   positioning: "Pakistan's rider-verified map and trip planner.",
-  launchWindow: 'Summer 2026',
+  launchWindow: 'October 2026',
   url: 'https://wildnomad.vercel.app',
   domain: 'wildnomad.vercel.app',
-  contactEmail: 'umarzeeshan709@gmail.com',
+  contactEmail: 'venomxrider@gmail.com',
   instagram: '@thewildnomad.pk',
   instagramUrl: 'https://instagram.com/thewildnomad.pk',
-  earlyRiderCap: 1000,
   stopCount: 93,
   categoryCount: 23,
   offlineRegionCount: 7,
@@ -22,8 +21,8 @@ export const CTA_LABEL =
   LAUNCH_STATE === 'prelaunch' ? 'Get early access' : 'Download on Google Play';
 
 export const NAV_LINKS = [
-  { href: '#map', label: 'Map' },
-  { href: '#features', label: 'Features' },
   { href: '#routes', label: 'Routes' },
+  { href: '#features', label: 'Features' },
+  { href: '#map', label: 'Map' },
   { href: '#faq', label: 'FAQ' },
 ] as const;

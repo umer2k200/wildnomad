@@ -9,7 +9,6 @@ import {
 } from '@/data/categories';
 import { AnimatePresence } from 'framer-motion';
 import {
-  GeoJSONSource,
   Map as MapLibreMap,
   Marker,
   NavigationControl,
@@ -21,47 +20,77 @@ import { createPortal } from 'react-dom';
 import { useMediaQuery } from '@/lib/useMediaQuery';
 
 /**
- * Dark raster basemap (no API key).
- * Carto watermarks without a key; OpenFreeMap vector dark can hang before `load`.
+ * Satellite basemap, no API key.
+ * Vector styles from other hosts have hung before `load`.
  */
 const MAP_STYLE: StyleSpecification = {
   version: 8,
-  name: 'Esri Dark Gray',
+  name: 'Esri Imagery',
   sources: {
-    esri: {
+    imagery: {
       type: 'raster',
       tiles: [
-        'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
       ],
       tileSize: 256,
       attribution:
-        'Tiles &copy; <a href="https://www.esri.com/">Esri</a> &mdash; Esri, HERE, Garmin, FAO, NOAA, USGS',
+        'Tiles &copy; <a href="https://www.esri.com/">Esri</a> &mdash; Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community',
     },
-    esriRef: {
+    labels: {
       type: 'raster',
       tiles: [
-        'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+        'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
       ],
       tileSize: 256,
     },
   },
   layers: [
     {
-      id: 'esri-tiles',
+      id: 'imagery',
       type: 'raster',
-      source: 'esri',
+      source: 'imagery',
       minzoom: 0,
-      maxzoom: 16,
+      maxzoom: 19,
     },
     {
-      id: 'esri-labels',
+      id: 'labels',
       type: 'raster',
-      source: 'esriRef',
+      source: 'labels',
       minzoom: 0,
-      maxzoom: 16,
+      maxzoom: 19,
     },
   ],
 };
+
+type Cluster =
+  | { kind: 'poi'; poi: WebsitePoi }
+  | { kind: 'cluster'; id: string; lat: number; lng: number; count: number };
+
+/** Group nearby stops until the map is close enough to read each pin. */
+function clusterPois(pois: WebsitePoi[], zoom: number): Cluster[] {
+  if (zoom >= 11) return pois.map((poi) => ({ kind: 'poi', poi }));
+
+  const cell = zoom >= 9 ? 0.12 : zoom >= 7.5 ? 0.28 : 0.55;
+  const buckets = new Map<string, WebsitePoi[]>();
+  for (const poi of pois) {
+    const key = `${Math.floor(poi.lng / cell)}:${Math.floor(poi.lat / cell)}`;
+    const list = buckets.get(key);
+    if (list) list.push(poi);
+    else buckets.set(key, [poi]);
+  }
+
+  const items: Cluster[] = [];
+  for (const [id, list] of buckets) {
+    if (list.length === 1) {
+      items.push({ kind: 'poi', poi: list[0] });
+      continue;
+    }
+    const lat = list.reduce((sum, poi) => sum + poi.lat, 0) / list.length;
+    const lng = list.reduce((sum, poi) => sum + poi.lng, 0) / list.length;
+    items.push({ kind: 'cluster', id, lat, lng, count: list.length });
+  }
+  return items;
+}
 
 function createMarkerEl(poi: WebsitePoi, onClick: (poi: WebsitePoi) => void) {
   const meta = CATEGORY_MAP[poi.category];
@@ -118,22 +147,49 @@ function createMarkerEl(poi: WebsitePoi, onClick: (poi: WebsitePoi) => void) {
   return el;
 }
 
-function toGeoJSON(pois: WebsitePoi[]) {
-  return {
-    type: 'FeatureCollection' as const,
-    features: pois.map((poi) => ({
-      type: 'Feature' as const,
-      properties: {
-        id: poi.id,
-        category: poi.category,
-        color: CATEGORY_MAP[poi.category]?.color ?? '#D9642C',
-      },
-      geometry: {
-        type: 'Point' as const,
-        coordinates: [poi.lng, poi.lat] as [number, number],
-      },
-    })),
-  };
+function createClusterEl(count: number, onClick: () => void) {
+  const el = document.createElement('button');
+  el.type = 'button';
+  el.className = 'wn-map-marker';
+  el.setAttribute('aria-label', `${count} stops in this area`);
+  el.style.cssText = `
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `;
+
+  const pill = document.createElement('span');
+  pill.setAttribute('aria-hidden', 'true');
+  pill.textContent = String(count);
+  pill.style.cssText = `
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: 2px solid #121212;
+    background: #D9642C;
+    color: #fff7f2;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: ui-monospace, monospace;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+    pointer-events: none;
+  `;
+  el.appendChild(pill);
+  el.addEventListener('click', (e) => {
+    e.stopPropagation();
+    onClick();
+  });
+  return el;
 }
 
 export function MapView({ pois }: { pois: WebsitePoi[] }) {
@@ -141,9 +197,9 @@ export function MapView({ pois }: { pois: WebsitePoi[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const markersRef = useRef<Marker[]>([]);
-  const poisRef = useRef(pois);
   const filteredRef = useRef<WebsitePoi[]>(pois);
   const onSelectRef = useRef<(poi: WebsitePoi) => void>(() => {});
+  const paintRef = useRef<(list: WebsitePoi[]) => void>(() => {});
 
   const [ready, setReady] = useState(false);
   const [interactive, setInteractive] = useState(false);
@@ -155,10 +211,6 @@ export function MapView({ pois }: { pois: WebsitePoi[] }) {
     () => (filter === 'all' ? pois : pois.filter((p) => p.category === filter)),
     [pois, filter],
   );
-
-  useEffect(() => {
-    poisRef.current = pois;
-  }, [pois]);
 
   useEffect(() => {
     filteredRef.current = filtered;
@@ -178,21 +230,35 @@ export function MapView({ pois }: { pois: WebsitePoi[] }) {
     if (!map) return;
 
     clearMarkers();
+    const zoom = map.getZoom();
 
-    const source = map.getSource('pois') as GeoJSONSource | undefined;
-    if (source) {
-      source.setData(toGeoJSON(list));
-    }
+    for (const item of clusterPois(list, zoom)) {
+      if (item.kind === 'poi') {
+        const el = createMarkerEl(item.poi, (poi) => onSelectRef.current(poi));
+        markersRef.current.push(
+          new Marker({ element: el, anchor: 'center' })
+            .setLngLat([item.poi.lng, item.poi.lat])
+            .addTo(map),
+        );
+        continue;
+      }
 
-    // HTML markers for every stop — reliable at all zooms
-    for (const poi of list) {
-      const el = createMarkerEl(poi, (p) => onSelectRef.current(p));
-      const marker = new Marker({ element: el, anchor: 'center' })
-        .setLngLat([poi.lng, poi.lat])
-        .addTo(map);
-      markersRef.current.push(marker);
+      const nextZoom = Math.min(zoom + 2, 14);
+      const el = createClusterEl(item.count, () => {
+        map.easeTo({
+          center: [item.lng, item.lat],
+          zoom: nextZoom,
+        });
+      });
+      markersRef.current.push(
+        new Marker({ element: el, anchor: 'center' })
+          .setLngLat([item.lng, item.lat])
+          .addTo(map),
+      );
     }
   }
+
+  paintRef.current = paintStops;
 
   // Init map once
   useEffect(() => {
@@ -202,8 +268,8 @@ export function MapView({ pois }: { pois: WebsitePoi[] }) {
     const map = new MapLibreMap({
       container,
       style: MAP_STYLE,
-      center: [74.5, 35.5],
-      zoom: 6.2,
+      center: [74.4, 35.75],
+      zoom: 7,
       attributionControl: { compact: true },
       dragRotate: false,
       pitchWithRotate: false,
@@ -217,28 +283,13 @@ export function MapView({ pois }: { pois: WebsitePoi[] }) {
     mapRef.current = map;
 
     map.on('load', () => {
-      map.addSource('pois', {
-        type: 'geojson',
-        data: toGeoJSON(filteredRef.current),
-      });
-
-      // Canvas circles under the HTML markers (backup if DOM markers lag)
-      map.addLayer({
-        id: 'poi-dots',
-        type: 'circle',
-        source: 'pois',
-        paint: {
-          'circle-color': '#D9642C',
-          'circle-radius': 6,
-          'circle-stroke-width': 2,
-          'circle-stroke-color': '#121212',
-          'circle-opacity': 0.9,
-        },
-      });
-
-      paintStops(filteredRef.current);
+      paintRef.current(filteredRef.current);
       setReady(true);
       map.resize();
+    });
+
+    map.on('zoomend', () => {
+      paintRef.current(filteredRef.current);
     });
 
     map.on('error', (e) => {
@@ -298,10 +349,10 @@ export function MapView({ pois }: { pois: WebsitePoi[] }) {
           type="button"
           onClick={enableInteraction}
           className="absolute inset-0 z-[15] flex cursor-pointer items-center justify-center bg-[rgba(0,0,0,0.15)] transition-opacity duration-base"
-          aria-label="Click to interact with the map"
+          aria-label={isMobile ? 'Tap to explore the map' : 'Click to interact with the map'}
         >
           <span className="pointer-events-none rounded-pill border border-border-strong bg-[rgba(18,18,18,0.9)] px-4 py-2 type-small text-text backdrop-blur-md">
-            Click to interact
+            {isMobile ? 'Tap to explore' : 'Click to interact'}
           </span>
         </button>
       ) : null}

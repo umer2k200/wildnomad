@@ -9,6 +9,7 @@ export function PhoneFrame({
   className,
   float = false,
   tilt = true,
+  size = 'default',
 }: {
   children?: ReactNode;
   src?: string;
@@ -16,11 +17,19 @@ export function PhoneFrame({
   className?: string;
   float?: boolean;
   tilt?: boolean;
+  size?: 'default' | 'hero' | 'story' | 'stage';
 }) {
   return (
     <div
       className={cn(
-        'relative mx-auto w-[260px] sm:w-[280px]',
+        'relative mx-auto',
+        size === 'hero'
+          ? 'w-[180px] sm:w-[280px]'
+          : size === 'story'
+            ? 'w-[240px] sm:w-[280px]'
+            : size === 'stage'
+              ? 'w-[136px] sm:w-[156px] lg:w-[250px]'
+              : 'w-[220px] sm:w-[260px]',
         float && 'animate-[phone-float_6s_ease-in-out_infinite]',
         className,
       )}

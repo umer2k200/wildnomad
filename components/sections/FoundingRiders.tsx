@@ -1,86 +1,51 @@
-'use client';
-
-import { Button } from '@/components/ui/Button';
-import { Reveal } from '@/components/ui/Reveal';
-import { CTA_LABEL, LAUNCH_STATE, PLAY_STORE_URL, SITE } from '@/lib/config';
+import { EmailCapture } from '@/components/ui/EmailCapture';
+import { LAUNCH_STATE, SITE } from '@/lib/config';
 import Image from 'next/image';
 
 export function FoundingRiders() {
   return (
     <section
-      id="after-launch"
-      aria-labelledby="founding-heading"
-      className="relative flex scroll-mt-20 items-center overflow-hidden min-h-[36rem] sm:min-h-[42rem] lg:min-h-[min(100svh,56.25vw)]"
+      id="founder"
+      aria-labelledby="founder-heading"
+      className="relative flex min-h-[36rem] scroll-mt-20 items-center overflow-hidden sm:min-h-[40rem] lg:min-h-[min(100svh,52rem)]"
     >
       <div className="absolute inset-0 -z-10">
         <Image
           src="/images/mine.png"
-          alt=""
+          alt="A motorcycle parked against the mountains on a northern Pakistan road"
           fill
-          className="object-cover object-center"
+          className="object-cover object-[68%_center]"
           sizes="100vw"
-          priority={false}
         />
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(90deg, rgba(18,18,18,0.88) 0%, rgba(18,18,18,0.7) 36%, rgba(18,18,18,0.22) 66%, rgba(18,18,18,0.12) 100%)',
-          }}
-        />
-        <div
-          className="absolute inset-0 sm:hidden"
-          style={{
-            background:
-              'linear-gradient(180deg, rgba(18,18,18,0.82) 0%, rgba(18,18,18,0.62) 48%, rgba(18,18,18,0.38) 100%)',
+              'linear-gradient(90deg, rgba(18,18,18,0.55) 0%, rgba(18,18,18,0.28) 48%, rgba(18,18,18,0.12) 100%)',
           }}
         />
       </div>
 
       <div className="relative mx-auto w-full max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
-        <div className="max-w-xl text-center sm:text-left">
-          <p className="type-eyebrow text-primary mb-4">After launch</p>
-          <h2 id="founding-heading" className="type-h2 text-balance">
-            Free for the first {SITE.earlyRiderCap.toLocaleString('en-PK')}{' '}
-            riders.
+        <div className="max-w-xl rounded-2xl bg-[rgba(18,18,18,0.72)] p-6 text-center backdrop-blur-sm sm:p-8 sm:text-left">
+          <p className="type-eyebrow mb-4 text-primary">{SITE.launchWindow}</p>
+          <h2 id="founder-heading" className="type-h2 text-balance">
+            On Android this October.
           </h2>
-          <p className="type-lead text-text-secondary mt-5 max-w-prose-narrow mx-auto sm:mx-0">
-            I built this on these roads — not from a desk. When Wild Nomad hits
-            Android in {SITE.launchWindow}, the first{' '}
-            {SITE.earlyRiderCap.toLocaleString('en-PK')} riders get it free.
-            Leave your email above and you&apos;ll hear the day it&apos;s live.
+          <p className="type-lead mx-auto mt-5 max-w-prose-narrow text-text-secondary sm:mx-0">
+            I built this on these roads — not from a desk. Leave your email
+            and you&apos;ll get Wild Nomad the day it&apos;s on the Play Store.
           </p>
 
-          {LAUNCH_STATE === 'live' ? (
-            <Reveal className="mt-8">
-              <Button
-                size="lg"
-                onClick={() => {
-                  if (PLAY_STORE_URL) {
-                    window.open(PLAY_STORE_URL, '_blank', 'noopener,noreferrer');
-                  }
-                }}
-              >
-                Download on Google Play
-              </Button>
-            </Reveal>
-          ) : (
-            <Reveal className="mt-8">
-              <Button
-                size="lg"
-                onClick={() => {
-                  document
-                    .getElementById('early-access')
-                    ?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                {CTA_LABEL}
-              </Button>
+          <div id="founder-access" data-access className="mx-auto mt-8 max-w-md sm:mx-0">
+            <EmailCapture source="founding" variant="stacked" />
+            {LAUNCH_STATE === 'prelaunch' ? (
               <p className="mt-4 type-small text-text-muted">
-                Android first. iOS follows.
+                Android first. iPhone riders get the same email when iOS is
+                ready.
               </p>
-            </Reveal>
-          )}
+            ) : null}
+          </div>
         </div>
       </div>
     </section>

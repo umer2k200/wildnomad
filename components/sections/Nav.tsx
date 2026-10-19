@@ -1,7 +1,8 @@
 'use client';
 
 import { Button } from '@/components/ui/Button';
-import { CTA_LABEL, LAUNCH_STATE, NAV_LINKS, PLAY_STORE_URL, SITE } from '@/lib/config';
+import { CTA_LABEL, NAV_LINKS, SITE } from '@/lib/config';
+import { scrollToAccess } from '@/lib/scrollToAccess';
 import { cn } from '@/lib/utils';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -9,17 +10,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-function handleCta() {
-  if (LAUNCH_STATE === 'live' && PLAY_STORE_URL) {
-    window.open(PLAY_STORE_URL, '_blank', 'noopener,noreferrer');
-    return;
-  }
-  document.getElementById('early-access')?.scrollIntoView({ behavior: 'smooth' });
-}
-
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [showBar, setShowBar] = useState(false);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -36,7 +30,28 @@ export function Nav() {
     };
   }, [open]);
 
+  useEffect(() => {
+    const nodes = Array.from(document.querySelectorAll('[data-access]'));
+    if (nodes.length === 0) return;
+
+    const visible = new Set<Element>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) visible.add(entry.target);
+          else visible.delete(entry.target);
+        }
+        setShowBar(visible.size === 0 && window.scrollY > 240);
+      },
+      { threshold: 0.35 },
+    );
+
+    for (const node of nodes) observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
+    <>
     <header
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-all duration-base ease-out-expo',
@@ -80,7 +95,7 @@ export function Nav() {
         </ul>
 
         <div className="hidden lg:block">
-          <Button size="md" onClick={handleCta}>
+          <Button size="md" onClick={scrollToAccess}>
             {CTA_LABEL}
           </Button>
         </div>
@@ -129,7 +144,7 @@ export function Nav() {
                 className="w-full"
                 onClick={() => {
                   setOpen(false);
-                  handleCta();
+                  scrollToAccess();
                 }}
               >
                 {CTA_LABEL}
@@ -150,5 +165,19 @@ export function Nav() {
         ) : null}
       </AnimatePresence>
     </header>
+
+    {showBar && !open ? (
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-[rgba(18,18,18,0.92)] backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center gap-4 px-5 py-3 lg:px-8">
+          <p className="hidden min-w-0 flex-1 type-small text-text-secondary sm:block">
+            Android · {SITE.launchWindow}
+          </p>
+          <Button size="lg" className="w-full sm:w-auto" onClick={scrollToAccess}>
+            {CTA_LABEL}
+          </Button>
+        </div>
+      </div>
+    ) : null}
+    </>
   );
 }

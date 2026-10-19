@@ -27,7 +27,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 const description =
-  "Pakistan's rider-verified map for mountain roads. Get early access — free for the first 1,000 riders after launch.";
+  "Pakistan's rider-verified map for mountain roads. Android launches October 2026 — leave your email and you'll get it the day it's live.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
