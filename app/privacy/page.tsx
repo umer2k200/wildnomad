@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <LegalShell title="Privacy Policy" updated="3 September 2026">
+    <LegalShell title="Privacy Policy" updated="28 October 2026">
       <section>
         <p>
           <strong>Effective date:</strong> 6 August 2026
@@ -420,9 +420,9 @@ export default function PrivacyPage() {
         <h2>7. Data retention</h2>
         <p>
           We keep your information while your account is active or as needed to
-          provide the App. Email{' '}
-          <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a> to request
-          account deletion.
+          provide the App. You can delete the account in the App, or email{' '}
+          <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a> and ask us to
+          delete it. See Account deletion below.
         </p>
         <p>
           Waitlist emails are kept until launch notifications are complete or
@@ -462,7 +462,8 @@ export default function PrivacyPage() {
             (trips, rides, your posts, your alerts, packs)
           </li>
           <li>
-            <strong>Request account deletion</strong> by emailing{' '}
+            <strong>Delete your account</strong> in the App from your profile
+            (<strong>Delete account</strong>), or by emailing{' '}
             <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a>
           </li>
           <li>
@@ -480,7 +481,36 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>9. Children&apos;s privacy</h2>
+        <h2>9. Account deletion</h2>
+        <p>
+          You can delete your account in the App. Open your profile and choose{' '}
+          <strong>Delete account</strong>. You need an internet connection. The
+          App asks you to confirm before anything is removed. Deletion is
+          permanent and cannot be undone.
+        </p>
+        <p>When deletion succeeds, we remove:</p>
+        <ul>
+          <li>Your sign-in and profile</li>
+          <li>Your trips, recorded rides, and other personal data tied to the account</li>
+          <li>Posts and other content owned by the account, where they are removed with it</li>
+        </ul>
+        <p>
+          Map stops you added can stay on the map so other riders can still use
+          them. Your name is cleared from those stops.
+        </p>
+        <p>
+          Offline packs and other files stored only on the phone stay on the
+          device until you delete them in the App or uninstall it.
+        </p>
+        <p>
+          If deletion in the App does not complete, email{' '}
+          <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a> from the
+          address on the account and we will delete it.
+        </p>
+      </section>
+
+      <section>
+        <h2>10. Children&apos;s privacy</h2>
         <p>
           Wild Nomad is <strong>not directed at children under 13</strong> (or
           the minimum age in your country). We do not knowingly collect personal
@@ -490,7 +520,7 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>10. International users</h2>
+        <h2>11. International users</h2>
         <p>
           The App is designed for <strong>Pakistan</strong> but may be used from
           other countries. Your data may be processed where our providers
@@ -500,7 +530,7 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>11. Third-party links and apps</h2>
+        <h2>12. Third-party links and apps</h2>
         <p>
           The App may open <strong>Google Maps</strong>,{' '}
           <strong>WhatsApp</strong>, <strong>phone / SMS</strong>, or other
@@ -510,7 +540,7 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>12. Changes to this policy</h2>
+        <h2>13. Changes to this policy</h2>
         <p>
           We may update this Privacy Policy from time to time. The new version
           will show a new &quot;Last updated&quot; date. Continued use of the
@@ -519,7 +549,7 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>13. Google Play Data safety (summary)</h2>
+        <h2>14. Google Play Data safety (summary)</h2>
         <p>Summary for Play Console → Data safety:</p>
         <ul>
           <li>
@@ -553,13 +583,15 @@ export default function PrivacyPage() {
         </ul>
         <p>
           Data is <strong>encrypted in transit</strong>. Users can{' '}
-          <strong>request deletion</strong> via support email.{' '}
+          <strong>delete their account in the App</strong>, or request deletion
+          by emailing{' '}
+          <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a>.{' '}
           <strong>No advertising SDK. No sale of personal data.</strong>
         </p>
       </section>
 
       <section>
-        <h2>14. Contact us</h2>
+        <h2>15. Contact us</h2>
         <p>Questions about this Privacy Policy or your data:</p>
         <ul>
           <li>
