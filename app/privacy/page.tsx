@@ -2,7 +2,7 @@ import { LegalShell } from '@/components/LegalShell';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-const PRIVACY_EMAIL = 'venomxrider@gmail.com';
+const PRIVACY_EMAIL = 'wildnomadpk@gmail.com';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',

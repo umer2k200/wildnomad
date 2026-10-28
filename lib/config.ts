@@ -8,7 +8,7 @@ export const SITE = {
   launchWindow: 'October 2026',
   url: 'https://wildnomad.vercel.app',
   domain: 'wildnomad.vercel.app',
-  contactEmail: 'venomxrider@gmail.com',
+  contactEmail: 'wildnomadpk@gmail.com',
   instagram: '@thewildnomad.pk',
   instagramUrl: 'https://instagram.com/thewildnomad.pk',
   stopCount: 93,
