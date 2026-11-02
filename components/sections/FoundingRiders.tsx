@@ -1,5 +1,4 @@
-import { EmailCapture } from '@/components/ui/EmailCapture';
-import { LAUNCH_STATE, SITE } from '@/lib/config';
+import { PlayStoreButton } from '@/components/ui/PlayStoreButton';
 import Image from 'next/image';
 
 export function FoundingRiders() {
@@ -28,23 +27,17 @@ export function FoundingRiders() {
 
       <div className="relative mx-auto w-full max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
         <div className="max-w-xl rounded-2xl bg-[rgba(18,18,18,0.72)] p-6 text-center backdrop-blur-sm sm:p-8 sm:text-left">
-          <p className="type-eyebrow mb-4 text-primary">{SITE.launchWindow}</p>
+          <p className="type-eyebrow mb-4 text-primary">On Google Play</p>
           <h2 id="founder-heading" className="type-h2 text-balance">
-            On Android this October.
+            Take it on the ride.
           </h2>
           <p className="type-lead mx-auto mt-5 max-w-prose-narrow text-text-secondary sm:mx-0">
-            I built this on these roads — not from a desk. Leave your email
-            and you&apos;ll get Wild Nomad the day it&apos;s on the Play Store.
+            I built this on these roads. The Android app is on the Play Store —
+            download it before you leave the valley.
           </p>
 
-          <div id="founder-access" data-access className="mx-auto mt-8 max-w-md sm:mx-0">
-            <EmailCapture source="founding" variant="stacked" />
-            {LAUNCH_STATE === 'prelaunch' ? (
-              <p className="mt-4 type-small text-text-muted">
-                Android first. iPhone riders get the same email when iOS is
-                ready.
-              </p>
-            ) : null}
+          <div id="founder-access" data-access className="mx-auto mt-8 sm:mx-0">
+            <PlayStoreButton />
           </div>
         </div>
       </div>

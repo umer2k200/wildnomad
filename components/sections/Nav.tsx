@@ -1,8 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/Button';
-import { CTA_LABEL, NAV_LINKS, SITE } from '@/lib/config';
-import { scrollToAccess } from '@/lib/scrollToAccess';
+import { NAV_LINKS, PLAY_STORE_URL, SITE } from '@/lib/config';
 import { cn } from '@/lib/utils';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -95,9 +93,14 @@ export function Nav() {
         </ul>
 
         <div className="hidden lg:block">
-          <Button size="md" onClick={scrollToAccess}>
-            {CTA_LABEL}
-          </Button>
+          <a
+            href={PLAY_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-11 items-center rounded-md bg-primary px-5 text-sm font-semibold text-on-primary hover:bg-primary-dark"
+          >
+            Google Play
+          </a>
         </div>
 
         <button
@@ -139,16 +142,15 @@ export function Nav() {
               ))}
             </ul>
             <div className="mt-auto p-6 pb-10">
-              <Button
-                size="lg"
-                className="w-full"
-                onClick={() => {
-                  setOpen(false);
-                  scrollToAccess();
-                }}
+              <a
+                href={PLAY_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-12 w-full items-center justify-center rounded-md bg-primary text-sm font-semibold text-on-primary"
+                onClick={() => setOpen(false)}
               >
-                {CTA_LABEL}
-              </Button>
+                Get it on Google Play
+              </a>
               <a
                 href={SITE.instagramUrl}
                 target="_blank"
@@ -170,11 +172,16 @@ export function Nav() {
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-[rgba(18,18,18,0.92)] backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center gap-4 px-5 py-3 lg:px-8">
           <p className="hidden min-w-0 flex-1 type-small text-text-secondary sm:block">
-            Android · {SITE.launchWindow}
+            Free on Google Play
           </p>
-          <Button size="lg" className="w-full sm:w-auto" onClick={scrollToAccess}>
-            {CTA_LABEL}
-          </Button>
+          <a
+            href={PLAY_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-12 w-full items-center justify-center rounded-md bg-primary px-6 text-sm font-semibold text-on-primary sm:w-auto"
+          >
+            Google Play
+          </a>
         </div>
       </div>
     ) : null}

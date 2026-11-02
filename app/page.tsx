@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     absolute: 'Wild Nomad — Ride Pakistan',
   },
   description:
-    "Pakistan's rider-verified map for mountain roads. Android launches October 2026 — leave your email and you'll get it the day it's live.",
+    "Pakistan's rider-verified map for mountain roads. Download Wild Nomad free on Google Play.",
   alternates: { canonical: '/' },
 };
 

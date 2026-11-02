@@ -1,8 +1,7 @@
 import { Accordion } from '@/components/ui/Accordion';
-import { EmailCapture } from '@/components/ui/EmailCapture';
+import { PlayStoreButton } from '@/components/ui/PlayStoreButton';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { FAQ_ITEMS } from '@/data/faq';
-import { LAUNCH_STATE, SITE } from '@/lib/config';
 
 export function FAQ() {
   return (
@@ -18,14 +17,12 @@ export function FAQ() {
         />
         <Accordion items={FAQ_ITEMS} />
 
-        <div id="faq-access" data-access className="mx-auto mt-14 max-w-lg">
-          <p className="type-h3 mb-4 text-center">Get it the day it launches.</p>
-          <EmailCapture source="faq" variant="stacked" />
-          {LAUNCH_STATE === 'prelaunch' ? (
-            <p className="mt-3 text-center type-small text-text-muted">
-              Android in {SITE.launchWindow}. iOS follows.
-            </p>
-          ) : null}
+        <div id="faq-access" data-access className="mx-auto mt-14 flex max-w-lg flex-col items-center">
+          <p className="type-h3 mb-4 text-center">Get it on your phone.</p>
+          <PlayStoreButton />
+          <p className="mt-3 text-center type-small text-text-muted">
+            Free on Android. iPhone follows.
+          </p>
         </div>
       </div>
     </section>

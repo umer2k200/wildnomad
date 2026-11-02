@@ -94,6 +94,12 @@ export function Footer() {
           <p>© 2026 Wild Nomad</p>
           <div className="flex justify-center gap-5">
             <Link
+              href="/links"
+              className="hover:text-text transition-colors duration-fast"
+            >
+              Links
+            </Link>
+            <Link
               href="/privacy"
               className="hover:text-text transition-colors duration-fast"
             >

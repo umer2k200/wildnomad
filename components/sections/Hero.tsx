@@ -1,8 +1,8 @@
 'use client';
 
-import { EmailCapture } from '@/components/ui/EmailCapture';
 import { PhoneFrame } from '@/components/ui/PhoneFrame';
-import { LAUNCH_STATE, SITE } from '@/lib/config';
+import { PlayStoreButton } from '@/components/ui/PlayStoreButton';
+import { SITE } from '@/lib/config';
 import { cn } from '@/lib/utils';
 import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
@@ -70,7 +70,7 @@ export function Hero() {
                 )}
                 aria-hidden
               />
-              {LAUNCH_STATE === 'prelaunch' ? 'Pre-launch' : 'Live'} · {SITE.launchWindow} · Android
+              Now on Google Play · Android
             </p>
 
             <h1 id="hero-heading" className="type-hero text-balance">
@@ -100,18 +100,11 @@ export function Hero() {
               roads never had.
             </p>
 
-            <div
-              id="early-access"
-              data-access
-              className="mx-auto mt-8 max-w-lg scroll-mt-28 lg:mx-0"
-            >
-              <EmailCapture source="hero" variant="pill" />
-              {LAUNCH_STATE === 'prelaunch' ? (
-                <p className="mt-3 type-small text-text-muted">
-                  No spam. One email when Android launches in {SITE.launchWindow}.
-                  iPhone riders get the same note when iOS follows.
-                </p>
-              ) : null}
+            <div id="download" data-access className="mx-auto mt-8 scroll-mt-28 lg:mx-0">
+              <PlayStoreButton />
+              <p className="mt-3 type-small text-text-muted">
+                Free on Android. iPhone follows.
+              </p>
             </div>
 
             <p className="mt-6 type-mono text-pretty text-text-muted">

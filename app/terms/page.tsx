@@ -27,7 +27,7 @@ export default function TermsPage() {
           Wild Nomad provides a rider-verified map, trip planning tools, road
           alerts, offline packs, ride tracking, and related community features
           for travel in Pakistan. The product is provided as-is while it is in
-          active development, including early access builds.
+          active development.
         </p>
       </section>
 
@@ -77,8 +77,7 @@ export default function TermsPage() {
         <h2>Availability</h2>
         <p>
           We aim for reliability but do not guarantee uninterrupted access.
-          Features may change, break, or be withdrawn as we ship updates —
-          especially during early access.
+          Features may change, break, or be withdrawn as we ship updates.
         </p>
       </section>
 

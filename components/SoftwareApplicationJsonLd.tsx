@@ -1,4 +1,5 @@
-import { LAUNCH_STATE, SITE } from '@/lib/config';
+import { SITE_LINKS } from '@/data/links';
+import { PLAY_STORE_URL, SITE } from '@/lib/config';
 
 export function SoftwareApplicationJsonLd() {
   const data = {
@@ -14,18 +15,15 @@ export function SoftwareApplicationJsonLd() {
       priceCurrency: 'PKR',
     },
     url: SITE.url,
+    downloadUrl: PLAY_STORE_URL,
+    installUrl: PLAY_STORE_URL,
     image: `${SITE.url}/icon.png`,
     author: {
       '@type': 'Organization',
       name: SITE.name,
       email: SITE.contactEmail,
-      sameAs: [SITE.instagramUrl],
+      sameAs: SITE_LINKS.map((link) => link.href),
     },
-    ...(LAUNCH_STATE === 'live'
-      ? {}
-      : {
-          releaseNotes: `Pre-launch. Early access opening ${SITE.launchWindow}.`,
-        }),
   };
 
   return (

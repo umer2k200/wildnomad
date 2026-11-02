@@ -15,14 +15,15 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     id: 'launch',
-    question: 'When does it launch?',
-    answer: `${SITE.launchWindow} on Android. Leave your email and you'll get it the day it's on the Play Store.`,
+    question: 'Where do I download it?',
+    answer:
+      'On Google Play for Android. Open the download button on this page, or search Wild Nomad in the Play Store.',
   },
   {
     id: 'ios',
     question: 'Will there be an iOS version?',
     answer:
-      "Android first, because that's what most riders in Pakistan carry. iOS follows. Leave your email either way.",
+      "Android is on the Play Store, because that's what most riders in Pakistan carry. iOS follows.",
   },
   {
     id: 'offline',
