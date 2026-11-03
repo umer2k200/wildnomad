@@ -51,7 +51,7 @@ export const SITE_LINKS: SiteLink[] = [
     id: 'youtube',
     label: 'YouTube',
     handle: '@VenomRides-x9p',
-    href: 'https://www.youtube.com/@VenomRides-x9p',
+    href: 'https://www.youtube.com/channel/UC-CrmV_Ag0ez73TtdQf5XYQ',
   },
 ];
 
